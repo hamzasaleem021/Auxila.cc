@@ -1,0 +1,9 @@
+/*
+ * Fix for a Morning Brief bug, applied to the demo only.
+ * On phones the sync label and theme button sit in the top corners and
+ * overlap the "Personal Intelligence Brief" line. Add this rule to
+ * morning-brief.html in the app repo, then delete this file.
+ */
+@media (max-width: 699px) {
+  .masthead { padding-top: 56px; }
+}

@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /demos/
+Sitemap: https://auxila.cc/sitemap.xml
