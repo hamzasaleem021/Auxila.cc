@@ -18,7 +18,7 @@ CNAME                   auxila.cc (GitHub Pages custom domain)
 demos/
   demo-layer.js         shared demo mode (see below)
   open-loops/           the real Open Loops page, generated + demo-config.js
-  morning-brief/        the real Morning Brief page, generated + demo-config.js + demo-fixes.css
+  morning-brief/        the real Morning Brief page, generated + demo-config.js
 tools/
   build-demos.py        regenerates the two demo folders from the app repos
 ```
@@ -45,7 +45,7 @@ python3 tools/build-demos.py --open-loops ../open-loops --morning-brief ../morni
 ```
 
 Commit the `demos/` folder. The script never overwrites `demo-config.js`,
-`demo-fixes.css` or `demo-layer.js`.
+`demo-fixes.css` (if a demo has one) or `demo-layer.js`.
 
 ## Moving a demo into its app repo later
 
@@ -66,17 +66,6 @@ This removes the copy here, so the demo always matches the live app.
    `src: 'https://openloops.auxila.cc/open-loops.html?demo=1'`.
 4. Delete `demos/<app>/` here. Once both apps have moved, delete `demos/` and
    `tools/` too.
-
-## A Morning Brief bug the demo works around
-
-On phones, "Sign in to sync" and the theme button overlap the "Personal
-Intelligence Brief" line at the top. `demos/morning-brief/demo-fixes.css`
-fixes it for the demo only. Add the same rule to `morning-brief.html` in that
-repo, then delete `demo-fixes.css` here and rebuild:
-
-```css
-@media (max-width: 699px) { .masthead { padding-top: 56px; } }
-```
 
 ## Turning on "Notify me"
 

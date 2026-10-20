@@ -256,7 +256,7 @@
       var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
       if (!a) return;
       var h = a.getAttribute('href') || '';
-      var isPost = a.classList.contains('article-item') || a.classList.contains('article-featured');
+      var isPost = a.classList.contains('story');
       if (/^https:\/\/[a-z0-9-]+\.example\//.test(h)) {
         e.preventDefault();
         post({ type: 'event', name: 'read' });
@@ -267,8 +267,10 @@
     }, true);
     var capOpen = false;
     new MutationObserver(function () {
-      var v = document.getElementById('mb-voucher');
-      var on = !!(v && v.classList.contains('visible'));
+      // The code sheet: a visible sheet holding the code field
+      var v = document.getElementById('voucher-input');
+      var ov = v && v.closest ? v.closest('.sheet-overlay') : null;
+      var on = !!(ov && ov.classList.contains('visible'));
       if (on && !capOpen) post({ type: 'event', name: 'cap' });
       capOpen = on;
     }).observe(document.documentElement, { subtree: true, childList: true, attributes: true, attributeFilter: ['class'] });
