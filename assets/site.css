@@ -1,7 +1,7 @@
 /* auxila.cc homepage styles
  * Layout: one studio, two releases. Hero states the point of view and lists
  * what is out. Each release is an album page: sleeve on the left (flip for
- * liner notes), the pitch, its one limit, and a demo that opens in place.
+ * liner notes), the pitch, its one limit, and a link to the app.
  * Dark only, by choice; product colour only where the product speaks.
  */
 [hidden]{display:none!important}
@@ -87,7 +87,7 @@ a{color:inherit}
 .ol-tag{font-family:'Inter',system-ui,sans-serif;font-weight:500;letter-spacing:-.02em}
 .mb-tag{font-family:'Newsreader','Iowan Old Style',Georgia,serif;font-style:italic;font-weight:400}
 /* Morning Brief's accent is a light ochre, so text on it is ink, not white */
-.release.mb .btn.go,.release.mb .tries li.done i,.rel.mb .disc .lab{color:#0a0a0a}
+.release.mb .btn.go,.rel.mb .disc .lab{color:#0a0a0a}
 .r-body{margin:1rem 0 0;color:var(--fg-2);line-height:1.65;font-size:1.02rem;max-width:34rem}
 .r-for{margin:.8rem 0 0;font-size:1rem;line-height:1.5;color:var(--fg-2)}
 .r-for b{color:var(--fg);font-weight:700}
@@ -100,10 +100,6 @@ a{color:inherit}
 .btn:hover{border-color:var(--fg-3)}
 .btn.go{background:var(--acc);border-color:var(--acc);color:#fff}
 .btn.go:hover{filter:brightness(1.08)}
-.btn.try[aria-expanded="true"]{border-color:var(--acc)}
-.pl{display:inline-block;width:0;height:0;border-left:.52em solid currentColor;border-top:.33em solid transparent;border-bottom:.33em solid transparent}
-.try[aria-expanded="true"] .pl{width:.62em;height:.62em;border:0;background:currentColor;border-radius:1px}
-.rel.playing .disc{transform:translateX(30%) rotate(40deg)}
 
 .lbl-s{margin:0;font-size:.76rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--fg-3)}
 .track{margin-top:2.2rem;max-width:34rem}
@@ -113,28 +109,6 @@ a{color:inherit}
 .track li::before{content:counter(t);font-stretch:75%;font-weight:800;color:var(--fg-3);font-variant-numeric:tabular-nums;width:.9rem;flex:none}
 .credits{margin:1.1rem 0 0;font-size:.86rem;color:var(--fg-3);line-height:1.7;max-width:34rem}
 .credits a{color:var(--fg-2);text-underline-offset:3px}
-
-/* demo that opens in place */
-.play{margin-top:1.4rem;border-radius:18px;background:var(--w-bg);color:var(--w-fg);padding:clamp(.9rem,2.4vw,1.3rem);border:1px solid var(--w-line);box-shadow:0 30px 70px rgba(0,0,0,.45)}
-.play.ol{--w-bg:#0c1f1e;--w-fg:#fffaf0;--w-fg2:rgba(255,250,240,.72);--w-line:rgba(255,250,240,.12)}
-.play.mb{--w-bg:#141210;--w-fg:#e8e4dc;--w-fg2:#bdb8b0;--w-line:#332d27}
-.play-head{display:flex;align-items:center;justify-content:space-between;gap:.8rem;margin-bottom:.9rem}
-.playing-tag{display:flex;align-items:center;gap:.6rem;font-size:.86rem;font-weight:600;line-height:1.3}
-.playing-tag em{font-style:normal;font-weight:400;color:var(--w-fg2)}
-.mini-disc{width:26px;height:26px;border-radius:50%;background:repeating-radial-gradient(circle,#0d0d0e 0 1px,#1f1f21 1px 2px);position:relative;flex:none;animation:spin 2.4s linear infinite;box-shadow:inset 0 0 0 1px rgba(255,255,255,.1)}
-.mini-disc::after{content:"";position:absolute;inset:32%;border-radius:50%;background:var(--acc)}
-@keyframes spin{to{transform:rotate(360deg)}}
-.x{font:inherit;font-size:.84rem;background:none;border:1px solid var(--w-line);color:var(--w-fg2);border-radius:999px;padding:.4rem .8rem;cursor:pointer;flex:none}
-.x:hover{color:var(--w-fg)}
-.tries{list-style:none;margin:0 0 .9rem;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.5rem}
-@media (max-width:640px){.tries{grid-template-columns:1fr;gap:.35rem}}
-.tries li{display:flex;gap:.55rem;align-items:flex-start;font-size:.84rem;line-height:1.4;color:var(--w-fg2);border:1px solid var(--w-line);border-radius:10px;padding:.6rem .7rem;transition:border-color .3s,color .3s}
-.tries li i{flex:none;width:17px;height:17px;border-radius:50%;border:1.5px solid currentColor;margin-top:1px;display:grid;place-items:center;font-style:normal;font-size:.62rem;font-weight:800}
-.tries li.done{color:var(--w-fg);border-color:var(--acc)}
-.tries li.done i{background:var(--acc);border-color:var(--acc);color:#fff}
-.tries li.done i::before{content:"✓"}
-.play-done{margin:.9rem 0 0;font-size:.9rem;line-height:1.5;color:var(--w-fg)}
-.play-done a{color:var(--w-fg);font-weight:600;text-underline-offset:3px}
 
 /* next release */
 .updates{border-top:1px solid var(--line)}
@@ -242,21 +216,7 @@ a{color:inherit}
 .back-in{gap:3.4cqi}
 .back-in .notes{margin:0;font-size:max(.8rem,4.3cqi);line-height:1.45}
 .back-in .cred{margin:auto 0 0;font-size:max(.72rem,3.3cqi);line-height:1.4;opacity:.75}
-.play-btns{display:flex;gap:.4rem;flex:none}
-.play-head{flex-wrap:wrap}
-.phone{position:relative;max-width:24.5rem;margin:0 auto;border-radius:2.5rem;padding:.55rem;background:#141416;box-shadow:0 30px 80px rgba(0,0,0,.55),inset 0 0 0 1px rgba(255,255,255,.1),inset 0 0 0 5px #0b0b0c}
-.phone iframe{display:block;width:100%;height:46rem;height:min(46rem,calc(100vh - 12.5rem));min-height:32rem;border:0;border-radius:2rem;background:var(--w-bg)}
-.tries .sm{display:none}
-.phone-load{position:absolute;inset:.55rem;border-radius:2rem;background:var(--w-bg);color:var(--w-fg2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.9rem;padding:1.5rem;text-align:center;font-size:.92rem;line-height:1.5;transition:opacity .35s}
-.phone-load.gone{opacity:0;pointer-events:none}
-.phone-load .mini-disc{width:44px;height:44px}
-.phone-load a{color:var(--w-fg);font-weight:600}
-@media (max-width:640px){.phone{border-radius:1.8rem;padding:.4rem}.phone iframe{height:calc(100vh - 11rem);height:calc(100svh - 11rem);min-height:30rem;max-height:42rem;border-radius:1.45rem}.phone-load{inset:.4rem;border-radius:1.45rem}
-.playing-tag em{display:none}
-.tries{display:flex;gap:.35rem;overflow-x:auto;scrollbar-width:none;margin-bottom:.7rem}
-.tries li{flex:none;align-items:center;padding:.38rem .65rem .38rem .45rem;border-radius:999px;font-size:.8rem;white-space:nowrap}
-.tries li i{margin-top:0}
-.tries .lg{display:none}.tries .sm{display:inline}}
+
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 
 /* hidden field that only bots fill in */
